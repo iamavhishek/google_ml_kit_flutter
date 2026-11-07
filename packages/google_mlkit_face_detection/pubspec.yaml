@@ -11,7 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_mlkit_commons: ^1.0.1
+  # Keep commons on the same fork/branch: published commons 1.0.1 still
+  # declares an iOS Swift package that pulls upstream google-mlkit-swiftpm
+  # 9.0.2, which conflicts with the vendored GTMSessionFetcher 4.x fork.
+  google_mlkit_commons:
+    git:
+      url: https://github.com/iamavhishek/google_ml_kit_flutter.git
+      ref: fix/ios-firebase-13
+      path: packages/google_mlkit_commons
 
 dev_dependencies:
   flutter_test:
