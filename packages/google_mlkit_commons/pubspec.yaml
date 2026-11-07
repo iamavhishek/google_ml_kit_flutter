@@ -23,7 +23,7 @@ flutter:
       android:
         package: com.google_mlkit_commons
         pluginClass: GoogleMlKitCommonsPlugin
-      ios:
-        pluginClass: GoogleMlKitCommonsPlugin
-        swiftPackage:
-          path: ios/google_mlkit_commons
+      # iOS intentionally has no native plugin here: the Swift code is compiled
+      # into each ML Kit plugin's own SPM target now, and keeping this package
+      # in the graph would pull a second, unpatched google-mlkit-swiftpm
+      # instance alongside the face detection fork.

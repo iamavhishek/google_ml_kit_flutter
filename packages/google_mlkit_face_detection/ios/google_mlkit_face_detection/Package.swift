@@ -13,10 +13,12 @@ let package = Package(
             targets: ["google_mlkit_face_detection"])
     ],
     dependencies: [
-        .package(
-            url: "https://github.com/d-date/google-mlkit-swiftpm",
-            exact: "9.0.2"
-        )
+        // Vendored fork of google-mlkit-swiftpm 9.0.2 with a widened
+        // GTMSessionFetcher range so Firebase iOS SDK 13+ (GTMSessionFetcher 4.x)
+        // can resolve alongside ML Kit. The path is inside this package's root,
+        // so it keeps working when Flutter symlinks the plugin into the
+        // generated Swift package and resolves paths lexically.
+        .package(path: "google-mlkit-swiftpm")
     ],
     targets: [
         .target(
